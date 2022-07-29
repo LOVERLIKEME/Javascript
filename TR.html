@@ -45,6 +45,8 @@
       let RandNum = Ran4Num();
       console.log("Secret! The answer is " + RandNum);
 
+      let wrong = 0;
+
       // 3. 참여자가 입력한 숫자 전송
 
       form.addEventListener("submit", function (e) {
@@ -56,20 +58,24 @@
         console.log(input.value);
         document.body.append(input.value);
 
-        let wrong = 0;
+        // let wrong = 0; -> 위에다 선언해야 함 (이유 : 스코프)
         let UserResult = input.value;
         if (UserResult == RandNum) {
           result.textContent = "홈런!! 게임을 다시 시작합니다.";
           console.log("홈런! 게임을 다시 시작합니다.");
           wrong = 0;
+          RandNum = Ran4Num();
+          console.log("Secret! The answer is " + RandNum);
           // 숫자 어떻게 바꿔야 할 지 모르겠음
         } else if (wrong == 10) {
           // 작동 안됨
 
           result.textContent = "실패! 게임을 다시 시작합니다.";
           wrong = 0;
+          RandNum = Ran4Num();
+          console.log("Secret! The answer is " + RandNum);
 
-          return RandNum; // 숫자 안 바뀜
+          // return RandNum; // 숫자 안 바뀜
         } else {
           let S = 0;
           let B = 0; // 어떻게 비교해야 할 지 모르겠다. split가 안됨

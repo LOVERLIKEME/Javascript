@@ -53,8 +53,7 @@
         e.preventDefault();
 
         // 이하 코드 작성
-        console.log("입력 버튼 누를때마다 들어오는 구역");
-        result.textContent = "결과값에 데이터를 넣을수 있어요";
+
         console.log(input.value);
         document.body.append(input.value);
 
@@ -64,23 +63,31 @@
           result.textContent = "홈런!! 게임을 다시 시작합니다.";
           console.log("홈런! 게임을 다시 시작합니다.");
           wrong = 0;
+          RanNum = [];
           RandNum = Ran4Num();
+
           console.log("Secret! The answer is " + RandNum);
           // 숫자 어떻게 바꿔야 할 지 모르겠음
         } else if (wrong == 10) {
-          // 작동 안됨
+          // 작동 안됨 -> 해결
 
-          result.textContent = "실패! 게임을 다시 시작합니다.";
+          result.textContent =
+            "횟수 초과!! 정답은 " +
+            RandNum +
+            " 입니다. 게임을 다시 시작합니다.";
           wrong = 0;
+          RanNum = [];
           RandNum = Ran4Num();
           console.log("Secret! The answer is " + RandNum);
 
-          // return RandNum; // 숫자 안 바뀜
+          // return RandNum; // 숫자 안 바뀜 -> 해결
         } else {
           let S = 0;
-          let B = 0; // 어떻게 비교해야 할 지 모르겠다. split가 안됨
+          let B = 0; // 어떻게 비교해야 할 지 모르겠다. split가 안된다.
+
+          // console.log(list.indexOf(userlist));
           wrong++;
-          console.log(wrong); // wrong 값 증가 안됨
+          console.log(wrong); // wrong 값 증가 안됨 -> 해결완료
           result.textContent = S + " 스트라이크 / " + B + " 볼 입니다!";
         }
       });

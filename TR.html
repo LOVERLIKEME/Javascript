@@ -45,7 +45,7 @@
       let RandNum = Ran4Num();
       console.log("Secret! The answer is " + RandNum);
 
-      // 3. 참여자가 입력한 숫자 전송부
+      // 3. 참여자가 입력한 숫자 전송
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -61,17 +61,20 @@
         if (UserResult == RandNum) {
           result.textContent = "홈런!! 게임을 다시 시작합니다.";
           console.log("홈런! 게임을 다시 시작합니다.");
-          wrong++;
-          console.log(wrong);
+          wrong = 0;
+          // 숫자 어떻게 바꿔야 할 지 모르겠음
         } else if (wrong == 10) {
+          // 작동 안됨
+
           result.textContent = "실패! 게임을 다시 시작합니다.";
           wrong = 0;
-          return RandNum;
+
+          return RandNum; // 숫자 안 바뀜
         } else {
           let S = 0;
-          let B = 0;
+          let B = 0; // 어떻게 비교해야 할 지 모르겠다. split가 안됨
           wrong++;
-          console.log(wrong);
+          console.log(wrong); // wrong 값 증가 안됨
           result.textContent = S + " 스트라이크 / " + B + " 볼 입니다!";
         }
       });

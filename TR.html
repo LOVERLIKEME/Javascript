@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>숫자 야구 게임</title>
+  </head>
+
+  <body>
+    <script>
+      // 1. 화면구성
+      // 게임 이름
+      let title = document.createElement("h1");
+      title.textContent = "숫자 야구 게임";
+      document.body.append(title);
+      // 전송 폼
+      let form = document.createElement("form");
+      document.body.append(form);
+      // 입력창
+      let input = document.createElement("input");
+      input.maxLength = 4;
+      input.minLength = 4;
+      form.append(input);
+      // 입력 버튼
+      let btn = document.createElement("button");
+      btn.textContent = "입력";
+      form.append(btn);
+      // 결과조회
+      let result = document.createElement("div");
+      document.body.append(result);
+
+      // 2.숫자뽑기 함수 선언부
+      // 이하 코드 작성
+      function Ran4Num() {
+        let RanNum = [];
+        for (let i = 0; i < 4; i++) {
+          let j = Math.floor(Math.random() * 9) + 1;
+          if (RanNum.indexOf(j) === -1) {
+            RanNum.push(j);
+          } else {
+            i--;
+          }
+        }
+        return RanNum.join("");
+      }
+      console.log("Secret! The answer is " + Ran4Num());
+
+      // 3. 참여자가 입력한 숫자 전송부
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // 이하 코드 작성
+        console.log("입력 버튼 누를때마다 들어오는 구역");
+        result.textContent = "결과값에 데이터를 넣을수 있어요";
+        console.log(input.value);
+        document.body.append(input.value);
+
+        let UserResult = input.value;
+        if ((UserResult = Ran4Num())) {
+          console.log("정답!");
+        }
+      });
+    </script>
+  </body>
+</html>

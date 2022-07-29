@@ -30,8 +30,8 @@
 
       // 2.숫자뽑기 함수 선언부
       // 이하 코드 작성
+      let RanNum = [];
       function Ran4Num() {
-        let RanNum = [];
         for (let i = 0; i < 4; i++) {
           let j = Math.floor(Math.random() * 9) + 1;
           if (RanNum.indexOf(j) === -1) {
@@ -42,7 +42,8 @@
         }
         return RanNum.join("");
       }
-      console.log("Secret! The answer is " + Ran4Num());
+      let RandNum = Ran4Num();
+      console.log("Secret! The answer is " + RandNum);
 
       // 3. 참여자가 입력한 숫자 전송부
 
@@ -55,9 +56,23 @@
         console.log(input.value);
         document.body.append(input.value);
 
+        let wrong = 0;
         let UserResult = input.value;
-        if ((UserResult = Ran4Num())) {
-          console.log("정답!");
+        if (UserResult == RandNum) {
+          result.textContent = "홈런!! 게임을 다시 시작합니다.";
+          console.log("홈런! 게임을 다시 시작합니다.");
+          wrong++;
+          console.log(wrong);
+        } else if (wrong == 10) {
+          result.textContent = "실패! 게임을 다시 시작합니다.";
+          wrong = 0;
+          return RandNum;
+        } else {
+          let S = 0;
+          let B = 0;
+          wrong++;
+          console.log(wrong);
+          result.textContent = S + " 스트라이크 / " + B + " 볼 입니다!";
         }
       });
     </script>
